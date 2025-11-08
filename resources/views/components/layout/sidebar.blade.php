@@ -85,6 +85,10 @@ L14,17 C12.8954305,17 12,16.1045695 12,15 C12,14.5672596 12.1403557,14.1461923
             <span class="menu-header-text">Master</span>
         </li>
         <li class="menu-item">
+            <a href="{{ route('category.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-box"></i>
+                <div data-i18n="Category">Kategori Produk</div>
+            </a>
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">Katalog Produk</div>
