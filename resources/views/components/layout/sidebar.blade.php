@@ -75,7 +75,7 @@ L14,17 C12.8954305,17 12,16.1045695 12,15 C12,14.5672596 12.1403557,14.1461923
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item active">
-            <a href="/" class="menu-link">
+            <a href="{{ route('dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
