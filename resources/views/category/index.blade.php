@@ -83,7 +83,7 @@
 <script>
 function deleteConfirm(id) {
     Swal.fire({
-        title: 'Yakin mau hapus produk ini?',
+        title: 'Yakin mau hapus kategori ini?',
         text: "Data yang sudah dihapus tidak bisa dikembalikan!",
         icon: 'warning',
         showCancelButton: true,

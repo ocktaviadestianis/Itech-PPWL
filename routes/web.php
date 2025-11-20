@@ -14,7 +14,12 @@ Route::get('/dashboard', function () {
 Route::get('/', function () {
     return view('auth.login');
 })->name('home');
-
+Route::get('register', function () {
+    return view('auth.register');
+})->name('register');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 Route::middleware('auth')->group(function () {
 
     Route::resource('/category', CategoryController::class);
