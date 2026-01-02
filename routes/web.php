@@ -3,7 +3,27 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
+
+use App\Models\Product;
+//route dengan mode resources
+Route::resource('/category', CategoryController::class);
+Route::resource('/products', ProductController::class);
+Route::get('/', function () {
+    $products = Product::latest()->take(8)->get();
+    return view('user.home', compact('products'));
+})->name('home');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update/{product}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
+
 
 // Admin
 Route::get('/dashboard', function () {
@@ -11,7 +31,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified', 'admin'])->name('dashboard');
 
 // User
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('auth.login');
 })->name('home');
 Route::get('register', function () {
@@ -21,9 +41,6 @@ Route::get('register', function () {
 //     return view('welcome');
 // })->name('home');
 Route::middleware('auth')->group(function () {
-
-    Route::resource('/category', CategoryController::class);
-    Route::resource('/products', ProductController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

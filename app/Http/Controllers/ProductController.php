@@ -93,4 +93,9 @@ class ProductController extends Controller
         return redirect()->route('products.index')
         ->with('success', 'Produk berhasil dihapus.');
     }
+
+    public function show(Product $product)
+    {
+     return view('products.show', compact('product'));
+    }
 }
