@@ -12,16 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+            $table->string('id')->primary(); // TANPA auto increment
+            $table->foreignId('user_id')->nullable();
             $table->date('tanggal');
-            $table->decimal('total', 10, 2);
-            $table->string('bukti_pembayaran', 255)->nullable();
-            $table->enum('status_pembayaran', ['pending', 'sukses', 'gagal'])->default('pending');
+            $table->bigInteger('total');
+            $table->text('alamat');
+            $table->string('telepon');
+            $table->string('metode');
+            $table->string('status_pembayaran')->default('pending');
             $table->timestamps();
         });
     }
